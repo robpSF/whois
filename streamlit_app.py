@@ -12,7 +12,7 @@ st.title("WHOIS Lookup + Custom Image (Larger Domain Font)")
 # Try to load a known TTF font at a larger size
 # Adjust the font path if needed (e.g., "DejaVuSans.ttf", "Arial.ttf", etc.)
 RAW_TTF_URL = "https://raw.githubusercontent.com/robpSF/whois/main/DejaVuSans.ttf"  # Common on many Linux systems
-LARGE_FONT_SIZE = 15
+LARGE_FONT_SIZE = 30
 
 response = requests.get(RAW_TTF_URL)
 if response.status_code == 200:
