@@ -9,15 +9,19 @@ st.title("WHOIS Lookup + Custom Image (Larger Domain Font)")
 
 # Try to load a known TTF font at a larger size
 # Adjust the font path if needed (e.g., "DejaVuSans.ttf", "Arial.ttf", etc.)
-FONT_PATH = "https://raw.githubusercontent.com/robpSF/whois/main/DejaVuSans.ttf"  # Common on many Linux systems
+RAW_TTF_URL = "https://raw.githubusercontent.com/robpSF/whois/main/DejaVuSans.ttf"  # Common on many Linux systems
 LARGE_FONT_SIZE = 30  # About 3× the default ~10-12px size
 
-# Fallback if the TTF font isn't available
-if not os.path.isfile(FONT_PATH):
-    st.warning(f"Could not find '{FONT_PATH}'. Falling back to PIL's default font.")
-    large_title_font = ImageFont.load_default()
+response = requests.get(RAW_TTF_URL)
+if response.status_code == 200:
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".ttf") as tmp_file:
+        tmp_file.write(response.content)
+        tmp_font_path = tmp_file.name
+
+    large_title_font = ImageFont.truetype(tmp_font_path, 36)
 else:
-    large_title_font = ImageFont.truetype(FONT_PATH, LARGE_FONT_SIZE)
+    # fallback
+    large_title_font = ImageFont.load_default()
 
 # For subtitle and button text, we'll just keep the default smaller font
 subtitle_font = ImageFont.load_default()
