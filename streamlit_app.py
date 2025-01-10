@@ -20,7 +20,7 @@ if response.status_code == 200:
         tmp_file.write(response.content)
         tmp_font_path = tmp_file.name
 
-    large_title_font = ImageFont.truetype(tmp_font_path, 36)
+    large_title_font = ImageFont.truetype(tmp_font_path, LARGE_FONT_SIZE )
 else:
     # fallback
     large_title_font = ImageFont.load_default()
