@@ -30,7 +30,10 @@ subtitle_font = ImageFont.load_default()
 button_font = ImageFont.load_default()
 
 # Input field for the URL
-url_input = st.text_input("URL", "https://bbc.co.uk")
+#url_input = st.text_input("URL", "https://bbc.co.uk")
+url_input = st.text_input("Real URL (used for WHOIS lookup)", ""https://bbc.co.uk")
+fictional_url_input = st.text_input("Fictional URL (displayed on the image)", "fictional.example.com")
+
 
 # Button to perform the lookup
 if st.button("Lookup WHOIS Info"):
@@ -67,7 +70,7 @@ if st.button("Lookup WHOIS Info"):
 
         # Write the domain in larger font
         text_x, text_y = 20, 10
-        draw.text((text_x, text_y), domain, fill=(51, 51, 51), font=large_title_font)
+        draw.text((text_x, text_y), fictional_url_input, fill=(51, 51, 51), font=large_title_font)
 
         # Write the subtitle: "whois information" in smaller font
         subtitle_x, subtitle_y = 20, 45
