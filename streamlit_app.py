@@ -65,8 +65,9 @@ if st.button("Lookup WHOIS Info"):
 
         # Draw a "Whois" button
         button_width, button_height = 60, 30
-        button_x, button_y = 20, 65
+        button_x, button_y = 20, 55
         button_color = (51, 153, 255)  # Medium blue (#3399FF)
+        corner_radius = 6  # set how rounded you want the corners
         draw.rectangle(
             [(button_x, button_y), (button_x + button_width, button_y + button_height)],
             fill=button_color
