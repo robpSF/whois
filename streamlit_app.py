@@ -31,7 +31,7 @@ button_font = ImageFont.load_default()
 
 # Input field for the URL
 #url_input = st.text_input("URL", "https://bbc.co.uk")
-url_input = st.text_input("Real URL (used for WHOIS lookup)", ""https://bbc.co.uk")
+url_input = st.text_input("Real URL (used for WHOIS lookup)", "https://bbc.co.uk")
 fictional_url_input = st.text_input("Fictional URL (displayed on the image)", "fictional.example.com")
 
 
