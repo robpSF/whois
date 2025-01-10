@@ -53,9 +53,10 @@ if st.button("Lookup WHOIS Info"):
             # Some WHOIS lookups might return a list or string. Handle gracefully.
             plain_text_output = str(domain_info)
 
-        st.subheader(f"WHOIS Information for {real_domain}:")
+        st.subheader(f"WHOIS Information for {domain}:")
         # Instead of st.text(whois_str), use plain_text_output without JSON symbols.
         st.text(plain_text_output)
+        
         # --------------------------------------
         # PART 1: Create the custom image
         # --------------------------------------
