@@ -3,8 +3,25 @@ import whois
 from urllib.parse import urlparse
 from PIL import Image, ImageDraw, ImageFont
 from io import BytesIO
+import os
 
-st.title("WHOIS Lookup + Custom Image (Using textbbox)")
+st.title("WHOIS Lookup + Custom Image (Larger Domain Font)")
+
+# Try to load a known TTF font at a larger size
+# Adjust the font path if needed (e.g., "DejaVuSans.ttf", "Arial.ttf", etc.)
+FONT_PATH = "DejaVuSans.ttf"  # Common on many Linux systems
+LARGE_FONT_SIZE = 30  # About 3× the default ~10-12px size
+
+# Fallback if the TTF font isn't available
+if not os.path.isfile(FONT_PATH):
+    st.warning(f"Could not find '{FONT_PATH}'. Falling back to PIL's default font.")
+    large_title_font = ImageFont.load_default()
+else:
+    large_title_font = ImageFont.truetype(FONT_PATH, LARGE_FONT_SIZE)
+
+# For subtitle and button text, we'll just keep the default smaller font
+subtitle_font = ImageFont.load_default()
+button_font = ImageFont.load_default()
 
 # Input field for the URL
 url_input = st.text_input("URL", "https://www.example.com")
@@ -20,7 +37,7 @@ if st.button("Lookup WHOIS Info"):
         domain_info = whois.whois(domain)
         whois_str = str(domain_info)
 
-        # Display the WHOIS information on the page
+        # Display WHOIS information
         st.subheader(f"WHOIS Information for {domain}:")
         st.text(whois_str)
 
@@ -32,30 +49,24 @@ if st.button("Lookup WHOIS Info"):
         img = Image.new("RGB", (img_width, img_height), color=bg_color)
         draw = ImageDraw.Draw(img)
 
-        # Load fonts (using PIL’s default for demonstration).
-        title_font = ImageFont.load_default()
-        subtitle_font = ImageFont.load_default()
-        button_font = ImageFont.load_default()
+        # Write the domain in larger font
+        text_x, text_y = 20, 15
+        draw.text((text_x, text_y), domain, fill=(51, 51, 51), font=large_title_font)
 
-        # Write the domain
-        text_x, text_y = 20, 20
-        draw.text((text_x, text_y), domain, fill=(51, 51, 51), font=title_font)
-
-        # Write the subtitle: "whois information"
-        subtitle_x, subtitle_y = 20, 45
+        # Write the subtitle: "whois information" in smaller font
+        subtitle_x, subtitle_y = 20, 55
         draw.text((subtitle_x, subtitle_y), "whois information", fill=(51, 51, 51), font=subtitle_font)
 
         # Draw a "Whois" button
         button_width, button_height = 60, 30
         button_x, button_y = 20, 65
         button_color = (51, 153, 255)  # Medium blue (#3399FF)
-
         draw.rectangle(
             [(button_x, button_y), (button_x + button_width, button_y + button_height)],
             fill=button_color
         )
 
-        # Measure and center the text inside the button using textbbox
+        # Center text inside the button using textbbox
         whois_text = "Whois"
         bbox = draw.textbbox((0, 0), whois_text, font=button_font)
         w_text = bbox[2] - bbox[0]  # text width
@@ -63,7 +74,6 @@ if st.button("Lookup WHOIS Info"):
 
         center_x = button_x + (button_width // 2) - (w_text // 2)
         center_y = button_y + (button_height // 2) - (h_text // 2)
-
         draw.text((center_x, center_y), whois_text, fill="white", font=button_font)
 
         # --------------------------------------
