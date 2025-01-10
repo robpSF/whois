@@ -7,7 +7,7 @@ import os
 import requests
 import tempfile
 
-st.title("WHOIS Lookup + Custom Image (Larger Domain Font)")
+st.title("WHOIS Lookup + Custom Image")
 
 # Try to load a known TTF font at a larger size
 # Adjust the font path if needed (e.g., "DejaVuSans.ttf", "Arial.ttf", etc.)
