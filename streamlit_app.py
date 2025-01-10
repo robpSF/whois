@@ -65,11 +65,13 @@ if st.button("Lookup WHOIS Info"):
 
         # Draw a "Whois" button
         button_width, button_height = 60, 30
-        button_x, button_y = 20, 55
+        button_x, button_y = 20, 60
         button_color = (51, 153, 255)  # Medium blue (#3399FF)
         corner_radius = 6  # set how rounded you want the corners
-        draw.rectangle(
+        # 2) Use draw.rounded_rectangle (introduced in Pillow 8.2.0)
+        draw.rounded_rectangle(
             [(button_x, button_y), (button_x + button_width, button_y + button_height)],
+            radius=corner_radius,
             fill=button_color
         )
 
