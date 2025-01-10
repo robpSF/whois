@@ -56,7 +56,7 @@ if st.button("Lookup WHOIS Info"):
         draw = ImageDraw.Draw(img)
 
         # Write the domain in larger font
-        text_x, text_y = 20, 15
+        text_x, text_y = 20, 10
         draw.text((text_x, text_y), domain, fill=(51, 51, 51), font=large_title_font)
 
         # Write the subtitle: "whois information" in smaller font
