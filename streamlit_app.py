@@ -41,12 +41,21 @@ if st.button("Lookup WHOIS Info"):
     try:
         # Perform WHOIS lookup
         domain_info = whois.whois(domain)
-        whois_str = str(domain_info)
+        
+        # Instead of printing the raw dict with JSON-like symbols, 
+        # create a plain-text version (key: value).
+        if isinstance(domain_info, dict):
+            lines = []
+            for key, value in domain_info.items():
+                lines.append(f"{key}: {value}")
+            plain_text_output = "\n".join(lines)
+        else:
+            # Some WHOIS lookups might return a list or string. Handle gracefully.
+            plain_text_output = str(domain_info)
 
-        # Display WHOIS information
-        st.subheader(f"WHOIS Information for {domain}:")
-        st.text(whois_str)
-
+        st.subheader(f"WHOIS Information for {real_domain}:")
+        # Instead of st.text(whois_str), use plain_text_output without JSON symbols.
+        st.text(plain_text_output)
         # --------------------------------------
         # PART 1: Create the custom image
         # --------------------------------------
