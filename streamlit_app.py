@@ -33,7 +33,6 @@ if st.button("Lookup WHOIS Info"):
         draw = ImageDraw.Draw(img)
 
         # Load fonts (using PIL’s default for demonstration).
-        # If you have a custom font, you can use ImageFont.truetype("path/to/font.ttf", size).
         title_font = ImageFont.load_default()
         subtitle_font = ImageFont.load_default()
         button_font = ImageFont.load_default()
@@ -75,7 +74,7 @@ if st.button("Lookup WHOIS Info"):
         img_buffer.seek(0)
 
         # Display the image in Streamlit
-        st.image(img_buffer, caption="Custom WHOIS Image", use_column_width=False)
+        st.image(img_buffer, caption="Custom WHOIS Image", use_container_width=False)
 
         # Download button for the image
         st.download_button(
