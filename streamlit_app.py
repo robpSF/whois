@@ -54,7 +54,7 @@ if st.button("Lookup WHOIS Info"):
         draw.text((text_x, text_y), domain, fill=(51, 51, 51), font=large_title_font)
 
         # Write the subtitle: "whois information" in smaller font
-        subtitle_x, subtitle_y = 20, 55
+        subtitle_x, subtitle_y = 20, 45
         draw.text((subtitle_x, subtitle_y), "whois information", fill=(51, 51, 51), font=subtitle_font)
 
         # Draw a "Whois" button
