@@ -30,7 +30,7 @@ subtitle_font = ImageFont.load_default()
 button_font = ImageFont.load_default()
 
 # Input field for the URL
-url_input = st.text_input("URL", "https://www.example.com")
+url_input = st.text_input("URL", "https://bbc.co.uk")
 
 # Button to perform the lookup
 if st.button("Lookup WHOIS Info"):
@@ -64,7 +64,7 @@ if st.button("Lookup WHOIS Info"):
         draw.text((subtitle_x, subtitle_y), "whois information", fill=(51, 51, 51), font=subtitle_font)
 
         # Draw a "Whois" button
-        button_width, button_height = 60, 30
+        button_width, button_height = 70, 30
         button_x, button_y = 20, 60
         button_color = (51, 153, 255)  # Medium blue (#3399FF)
         corner_radius = 6  # set how rounded you want the corners
