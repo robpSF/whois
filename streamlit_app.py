@@ -9,7 +9,7 @@ st.title("WHOIS Lookup + Custom Image (Larger Domain Font)")
 
 # Try to load a known TTF font at a larger size
 # Adjust the font path if needed (e.g., "DejaVuSans.ttf", "Arial.ttf", etc.)
-FONT_PATH = "https://github.com/robpSF/whois/blob/main/DejaVuSans.ttf"  # Common on many Linux systems
+FONT_PATH = "https://raw.githubusercontent.com/robpSF/whois/main/DejaVuSans.ttf"  # Common on many Linux systems
 LARGE_FONT_SIZE = 30  # About 3× the default ~10-12px size
 
 # Fallback if the TTF font isn't available
