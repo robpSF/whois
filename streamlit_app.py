@@ -4,6 +4,7 @@ from urllib.parse import urlparse
 from PIL import Image, ImageDraw, ImageFont
 from io import BytesIO
 import os
+import requests
 
 st.title("WHOIS Lookup + Custom Image (Larger Domain Font)")
 
