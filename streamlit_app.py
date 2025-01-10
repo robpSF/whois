@@ -1,7 +1,6 @@
 import streamlit as st
 import whois
 from urllib.parse import urlparse
-import io
 
 st.title("WHOIS Lookup with Download")
 
@@ -27,20 +26,13 @@ if st.button("Lookup WHOIS Info"):
         st.subheader(f"WHOIS Information for {domain}:")
         st.text(whois_str)
 
-        # Create an in-memory text buffer
-        with io.StringIO() as buffer:
-            buffer.write(whois_str)
-            # Move the cursor back to the start of the buffer
-            buffer.seek(0)
-
-            # Add a download button so the user can save the WHOIS info locally
-            st.download_button(
-                label="Download WHOIS Info",
-                data=buffer,
-                file_name=f"{domain}_whois.txt",
-                mime="text/plain"
-            )
+        # Provide a download button for the WHOIS string
+        st.download_button(
+            label="Download WHOIS Info",
+            data=whois_str,               # ← Directly pass the WHOIS string
+            file_name=f"{domain}_whois.txt",
+            mime="text/plain"
+        )
 
     except Exception as e:
-        # Handle any errors (invalid domain, network issues, etc.)
         st.error(f"Error fetching WHOIS data: {e}")
