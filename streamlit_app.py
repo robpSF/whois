@@ -5,6 +5,7 @@ from PIL import Image, ImageDraw, ImageFont
 from io import BytesIO
 import os
 import requests
+import tempfile
 
 st.title("WHOIS Lookup + Custom Image (Larger Domain Font)")
 
